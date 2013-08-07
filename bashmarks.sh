@@ -28,7 +28,7 @@ if [[ ! -f $bookmarks_file ]]; then
   touch $bookmarks_file
 fi
 
-bookmark (){
+bm (){
   bookmark_name=$1
 
   if [[ -z $bookmark_name ]]; then
@@ -47,11 +47,11 @@ bookmark (){
 } 
 
 # Show a list of the bookmarks
-bookmarksshow (){
-  cat ~/.bookmarks | awk '{ printf "%-40s%-40s%s\n",$1,$2,$3}' FS=\|
+bml (){
+  cat ~/.bookmarks | awk '{ printf "%-40s %-40s\n",$2,$1}' FS=\| | tr ' ' '.'
 }
 
-go(){
+cdb(){
   bookmark_name=$1
 
   bookmark=`grep "|$bookmark_name$" "$bookmarks_file"`
@@ -73,4 +73,4 @@ _go_complete(){
   cat $bookmarks_file | cut -d\| -f2 | grep "$2.*"
 }
 
-complete -C _go_complete -o default go 
+complete -C _go_complete -o default cdb 
