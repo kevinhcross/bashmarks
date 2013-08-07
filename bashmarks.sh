@@ -21,7 +21,7 @@
 # 
 # Your bookmarks are stored in the ~/.bookmarks file
 
-bookmarks_file=~/.bookmarks
+bookmarks_file=~/utils/env_files/bookmarks
 
 # Create bookmarks_file it if it doesn't exist
 if [[ ! -f $bookmarks_file ]]; then
@@ -48,7 +48,7 @@ bm (){
 
 # Show a list of the bookmarks
 bml (){
-  cat ~/.bookmarks | awk '{ printf "%-40s %-40s\n",$2,$1}' FS=\| | tr ' ' '.'
+  cat $bookmarks_file | awk '{ printf "%-40s %s\n",$2,$1}' FS=\| | tr ' ' '.'
 }
 
 cdb(){
@@ -66,6 +66,15 @@ cdb(){
     dir=`echo "$bookmark" | cut -d\| -f1`
     cd "$dir" 
   fi
+}
+
+bmrm() {
+  bookmark_name=$1
+  tempfile=$(mktemp "${bookmarks_file}XXXXXX")
+  echo "Removing $bookmark_name from $bookmarks_file"
+  echo "matched:"
+  egrep "\|$bookmark_name$" $bookmarks_file
+  egrep -v "\|$bookmark_name$" $bookmarks_file > $tempfile && mv $tempfile $bookmarks_file
 }
 
 _go_complete(){
