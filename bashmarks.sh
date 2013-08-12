@@ -33,7 +33,7 @@ bm (){
 
   if [[ -z $bookmark_name ]]; then
     echo 'Invalid name, please provide a name for your bookmark. For example:'
-    echo '  bookmark foo'
+    echo '  bm foo'
   else
     bookmark="`pwd`|$bookmark_name" # Store the bookmark as folder|name
 
@@ -58,10 +58,10 @@ cdb(){
 
   if [[ -z $bookmark ]]; then
     echo 'Invalid name, please provide a valid bookmark name. For example:'
-    echo '  go foo'
+    echo '  cdb foo'
     echo
     echo 'To bookmark a folder, go to the folder then do this (naming the bookmark 'foo'):'
-    echo '  bookmark foo'
+    echo '  bm foo'
   else
     dir=`echo "$bookmark" | cut -d\| -f1`
     cd "$dir" 
