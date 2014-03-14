@@ -21,7 +21,7 @@
 # 
 # Your bookmarks are stored in the ~/.bookmarks file
 
-bookmarks_file=$HOME/utils/env_files/bookmarks
+bookmarks_file=$HOME/.bookmarks
 
 # Create bookmarks_file it if it doesn't exist
 if [[ ! -f $bookmarks_file ]]; then
