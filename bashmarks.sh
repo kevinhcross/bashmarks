@@ -6,18 +6,18 @@
 #   source ~/bin/bashmarks.sh
 #
 # To bookmark a folder, simply go to that folder, then bookmark it like so:
-#   bookmark foo
+#   bm foo
 #
 # The bookmark will be named "foo"
 #
 # When you want to get back to that folder use:
-#   go foo
+#   cdb foo
 #
 # To see a list of bookmarks:
-#   bookmarksshow
+#   bml
 # 
 # Tab completion works, to go to the shoobie bookmark:
-#   go sho[tab]
+#   cdb sho[tab]
 # 
 # Your bookmarks are stored in the ~/.bookmarks file
 
@@ -82,4 +82,4 @@ _go_complete(){
   cat $bookmarks_file | cut -d\| -f2 | grep "$2.*"
 }
 
-complete -C _go_complete -o default cdb 
+complete -C _go_complete -o default cdb bmrm
